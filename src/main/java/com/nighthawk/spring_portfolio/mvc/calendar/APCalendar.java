@@ -24,9 +24,86 @@ public class APCalendar {
     */
     private static int firstDayOfYear(int year) {
         // implementation not shown
+        
+        int yearCode = (year + (year/4)) % 7;
 
-        return 0;
+        int January = 0;
+
+        int dayNumber = 1;
+        
+        int centuryCode;
+
+        if (year/100 == 17) {
+            centuryCode = 4;
+            return centuryCode;
         }
+        else if (year/100 == 18) {
+            centuryCode = 2;
+            return centuryCode;
+
+        }
+        else if (year/100 == 19){
+            centuryCode = 0;
+            return centuryCode;
+
+        }
+        else if (year/100 == 20) {
+            centuryCode = 6;
+            return centuryCode;
+
+        }
+        else if (year/100 == 21) {
+            centuryCode = 4;
+            return centuryCode;
+
+        }
+        else if (year/100 == 22) {
+            centuryCode = 2;
+            return centuryCode;
+
+        }
+        else if (year/100 == 23) {
+            centuryCode = 0;
+            return centuryCode;
+
+        }
+        
+
+        if (isLeapYear(year) == true) {
+            int day = yearCode + 1 + centuryCode + 1;
+            int num = day % 7;
+            return num;
+        }
+        else {
+            int day = yearCode + 0 + centuryCode + 1;
+            int num = day % 7;
+            return num;
+        }
+
+        if (num == 0) {
+            System.out.println(num + ": Sunday");
+        }
+        else if (num ==1 ) {
+            System.out.println(num + ": Monday");
+        }
+        else if (num == 2) {
+            System.out.println(num + ": Tuesday");
+        }
+        else if (num == 3) {
+            System.out.println(num + ": Wednesday");
+        }
+        else if (num == 4) {
+            System.out.println(num + ": Thursday");
+        }
+        else if (num == 5) {
+            System.out.println(num + ": Friday");
+        }
+        else if (num == 6) {
+            System.out.println(num + ": Saturday");
+        }
+
+
+    }
 
 
     /** Returns n, where month, day, and year specify the nth day of the year.

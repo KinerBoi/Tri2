@@ -1,4 +1,8 @@
 package com.nighthawk.spring_portfolio.mvc.calendar;
+import java.lang.Math;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 // Prototype Implementation
 
@@ -9,7 +13,7 @@ public class APCalendar {
      * isLeapYear(2016) returns True
      */          
     public static boolean isLeapYear(int year) {
-        if(year % 4 == 0){
+        if(year % 400 == 0){
             return true;
         } else{
             return false;
@@ -27,7 +31,7 @@ public class APCalendar {
         
         int yearCode = (year + (year/4)) % 7;
 
-        int January = 0;
+        int January = 1;
 
         int dayNumber = 1;
         
@@ -67,17 +71,16 @@ public class APCalendar {
             return centuryCode;
 
         }
-        
 
+        
+        int num;
         if (isLeapYear(year) == true) {
             int day = yearCode + 1 + centuryCode + 1;
-            int num = day % 7;
-            return num;
+            num = day % 7;
         }
         else {
             int day = yearCode + 0 + centuryCode + 1;
-            int num = day % 7;
-            return num;
+            num = day % 7;
         }
 
         if (num == 0) {
@@ -115,8 +118,15 @@ public class APCalendar {
     private static int dayOfYear(int month, int day, int year) {
         // implementation not shown
 
-        return 1;
+        if (month == 1 && day == 1) {
+            return 1;
         }
+        else {
+            int firstDay = firstDayOfYear(year);
+            int dayAfterNew = dayOfYear(month, day, year);
+            return(dayAfterNew);
+        }
+    }
 
     /** Returns the number of leap years between year1 and year2, inclusive.
      * Precondition: 0 <= year1 <= year2
@@ -124,7 +134,16 @@ public class APCalendar {
     public static int numberOfLeapYears(int year1, int year2) {
          // to be implemented in part (a)
 
-        return 0;
+            for (int i = year2; i >= year1; i--) {
+                isLeapYear(i);
+                int count = 0;
+                if (isLeapYear(i) == true) {
+                    count++;
+                    return count;
+                }
+            
+            }
+            return 0;
         }
 
     /** Returns the value representing the day of the week for the given date
@@ -132,7 +151,11 @@ public class APCalendar {
     */
     public static int dayOfWeek(int month, int day, int year) { 
         // to be implemented in part (b)
-        return 0;
+
+        int firstDay = firstDayOfYear(year);
+        int dayAfterNew = dayOfYear(month, day, year);
+
+        return (firstDay + dayAfterNew - 1) % 7;
         }
 
     /** Tester method */

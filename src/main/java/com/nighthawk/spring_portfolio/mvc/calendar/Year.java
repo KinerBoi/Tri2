@@ -41,7 +41,7 @@ class Year {
 
    public static void main(String[] args) {
       Year year = new Year();
-      year.setYear(2022);
+      year.setYear(2023);
       System.out.println(year);
    }
 }

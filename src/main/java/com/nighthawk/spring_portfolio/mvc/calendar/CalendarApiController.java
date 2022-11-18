@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** Calendar API
- * Calendar Endpoint: /api/calendar/isLeapYear/2022, Returns: {"year":2020,"isLeapYear":false}
+ * Calendar Endpoint: /api/calendar/isLeapYear/2022,Returns: {"year":2020,"isLeapYear":false}
  */
 @RestController
 @RequestMapping("/api/calendar")

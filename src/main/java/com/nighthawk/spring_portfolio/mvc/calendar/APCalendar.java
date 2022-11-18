@@ -35,7 +35,7 @@ public class APCalendar {
 
         int dayNumber = 1;
         
-        int centuryCode;
+        int centuryCode = 0;
 
         if (year/100 == 17) {
             centuryCode = 4;
@@ -104,6 +104,7 @@ public class APCalendar {
         else if (num == 6) {
             System.out.println(num + ": Saturday");
         }
+        return num;
 
 
     }

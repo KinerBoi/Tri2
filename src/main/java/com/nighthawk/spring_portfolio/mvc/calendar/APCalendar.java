@@ -83,7 +83,7 @@ public class APCalendar {
         if (num == 0) {
             System.out.println(num + ": Sunday");
         }
-        else if (num ==1 ) {
+        else if (num == 1 ) {
             System.out.println(num + ": Monday");
         }
         else if (num == 2) {

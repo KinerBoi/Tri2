@@ -35,12 +35,35 @@ First set of annotations add functionality to POJO
 The last annotation connect to database
 --- @Entity
  */
+<<<<<<< HEAD
 
 
 
 
 
 public @Entity
+=======
+public static void main(String[] args) () {
+<<<<<<< HEAD
+    Person goodGuy = new Person("kinish2005@gmail.com", "234567890", "Kinish Sathish", myDate );
+
+=======
+    
+    Person goodGuy = new Person (Email: kinish2005@gmail.com, password:code123, name: Kinish Sathish, dob:2005-05-28, height 70.5, weight 154);
+    System.out.println(information);
+}
+>>>>>>> 5fdeeda3e91f5211795f009939879ebf0543da1a
+
+}
+
+<<<<<<< HEAD
+@void
+=======
+
+
+@Entity
+>>>>>>> 5fdeeda3e91f5211795f009939879ebf0543da1a
+>>>>>>> 81ad66d4c6a8083e166fa24987bdd04c7893c97a
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

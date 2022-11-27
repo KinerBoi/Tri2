@@ -106,16 +106,13 @@ public class Person {
         if (this.dob != null) {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             int age = Period.between(birthDay, LocalDate.now()).getYears();
-            return age;
-
             if(this.getAge() >= 18) {
-                return 1;
+                System.out.println(age + "Is adult");
             }
             else{
-                return 0;
+                System.out.println(age + "Is child");
             }
-
-        return -1;
+            return age;
     }
     }
 
@@ -153,7 +150,9 @@ public class Person {
     }
 
     public static void main(String args[]) {
-        
+        Date date = new Date();
+        Person kinish = new Person(email: ,);
+
 
     }
 

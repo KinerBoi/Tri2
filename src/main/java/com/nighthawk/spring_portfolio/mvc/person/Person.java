@@ -143,7 +143,8 @@ public class Person {
     }
 
     public String toString () {
-        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"password\": " + this.password);
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"password\": " 
+        + this.password);
     }
     
  

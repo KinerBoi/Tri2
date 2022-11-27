@@ -40,7 +40,7 @@ The last annotation connect to database
 
 
 
-public @Entity
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

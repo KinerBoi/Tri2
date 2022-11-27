@@ -39,8 +39,6 @@ public static void main(String[] args) () {
     
     Person goodGuy = new Person (Email: kinish2005@gmail.com, password:code123, name: Kinish Sathish, dob:2005-05-28, height 70.5, weight 154);
     System.out.println(information);
-
-
 }
 
 public String information () {
@@ -49,10 +47,11 @@ public String information () {
 }
 
 
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @TypeDef(name="json", typeClass = JsonType.class)
 public class Person {
     

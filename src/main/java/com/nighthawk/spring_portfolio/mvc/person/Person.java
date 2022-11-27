@@ -36,15 +36,10 @@ The last annotation connect to database
 --- @Entity
  */
 public static void main(String[] args) () {
-<<<<<<< HEAD
-    Person goodGuy = new Person("kinish2005@gmail.com", "234567890", "Kinish Sathish", myDate );
-
-=======
     
     Person goodGuy = new Person (Email: kinish2005@gmail.com, password:code123, name: Kinish Sathish, dob:2005-05-28, height 70.5, weight 154);
     System.out.println(information);
 }
->>>>>>> 5fdeeda3e91f5211795f009939879ebf0543da1a
 
 }
 

@@ -35,6 +35,11 @@ First set of annotations add functionality to POJO
 The last annotation connect to database
 --- @Entity
  */
+
+
+
+
+
 public @Entity
 @Data
 @AllArgsConstructor
@@ -146,6 +151,11 @@ public class Person {
         return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"password\": " 
         + this.password);
     }
+
+    public static void main(String args[]) {
+        
+    }
+
     
  
 }

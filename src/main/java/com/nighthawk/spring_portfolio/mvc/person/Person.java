@@ -6,6 +6,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,6 +35,20 @@ First set of annotations add functionality to POJO
 The last annotation connect to database
 --- @Entity
  */
+public static void main(String[] args) () {
+    
+    Person goodGuy = new Person (Email: kinish2005@gmail.com, password:code123, name: Kinish Sathish, dob:2005-05-28, height 70.5, weight 154);
+    System.out.println(information);
+
+
+}
+
+public String information () {
+    return("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + "," 
+    + "\height" + this.height + "," + "\weight" + this.weight} );
+}
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -76,22 +91,57 @@ public class Person {
     @Type(type="json")
     @Column(columnDefinition = "jsonb")
     private Map<String,Map<String, Object>> stats = new HashMap<>(); 
+
+    @NotEmpty
+    private double height;
+
+    @NotEmpty
+    private double age;
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob) {
+    public Person(String email, String password, String name, Date dob, double height, double age) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
+        this.height = height;
+        this.age = age;
     }
 
     // A custom getter to return age from dob attribute
     public int getAge() {
         if (this.dob != null) {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            return Period.between(birthDay, LocalDate.now()).getYears(); }
+            int age = Period.between(birthDay, LocalDate.now()).getYears();
+            return age;
         return -1;
     }
 
+    public double bodyMassIndex(double height, double weight) {
+        double bmi = (weight/(height * height)) * 703;
+        return bmi;
+    }
+
+    public double bodyFatPercentage (double bmi, double height, double weight, double age) {
+        double bfp = ((1.20 * bodyMassIndex(height, weight)) + (0.23 * age) - 5.4);
+        return bfp;
+    }
+
+
+    public double netCalories () {
+
+        Scanner steps = new Scanner(System.in);
+        System.out.println("Enter the amount of steps you took today");
+        double stepsValue = steps.nextDouble();
+
+        Scanner calorie = new Scanner(System.in);
+        System.out.println("Enter the amount of calories you ate today");
+        double calorieValue = calorie.nextDouble();
+
+        double caloriesBurned = stepsValue * 0.05;
+        double netCaloriePerDay = calorieValue - caloriesBurned;
+        return netCaloriePerDay;
+    }
+ 
 }

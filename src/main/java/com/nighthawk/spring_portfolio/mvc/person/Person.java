@@ -88,16 +88,21 @@ public class Person {
 
     @NotEmpty
     private double age;
+
+    @NotEmpty
+    private double weight;
+
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob, double height, double age) {
+    public Person(String email, String password, String name, Date dob, double height, double age, double weight) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
         this.height = height;
         this.age = age;
+        this.weight = weight;
         
     }
 

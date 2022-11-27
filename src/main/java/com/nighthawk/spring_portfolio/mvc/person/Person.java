@@ -36,19 +36,12 @@ The last annotation connect to database
 --- @Entity
  */
 public static void main(String[] args) () {
-    
-    Person goodGuy = new Person (Email: kinish2005@gmail.com, password:code123, name: Kinish Sathish, dob:2005-05-28, height 70.5, weight 154);
-    System.out.println(information);
+    Person goodGuy = new Person("kinish2005@gmail.com", "234567890", "Kinish Sathish", myDate );
 
 
 }
 
-public String information () {
-    return("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + "," 
-    + "\height" + this.height + "," + "\weight" + this.weight} );
-}
-
-
+@void
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -107,6 +100,7 @@ public class Person {
         this.dob = dob;
         this.height = height;
         this.age = age;
+        
     }
 
     // A custom getter to return age from dob attribute
@@ -115,8 +109,19 @@ public class Person {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             int age = Period.between(birthDay, LocalDate.now()).getYears();
             return age;
+
+            if(this.getAge() >= 18) {
+                return 1;
+            }
+            else{
+                return 0;
+            }
+
         return -1;
     }
+    }
+
+    
 
     public double bodyMassIndex(double height, double weight) {
         double bmi = (weight/(height * height)) * 703;
@@ -143,5 +148,10 @@ public class Person {
         double netCaloriePerDay = calorieValue - caloriesBurned;
         return netCaloriePerDay;
     }
+
+    public String toString () {
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"password\": " + this.password ;
+    }
+    
  
 }

@@ -105,7 +105,6 @@ public class Person {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.id = id;
         this.dob = dob;
         this.height = height;
         this.weight = weight;

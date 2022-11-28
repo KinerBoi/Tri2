@@ -136,7 +136,7 @@ public class PersonApiController {
         Optional<Person> optional = repository.findById(id);
         if (optional.isPresent()) {
             Person person = optional.get();
-            String ageString = person.getAgeToString();
+            String ageString = person.toString();
             return ageString;
         }
 
@@ -149,7 +149,7 @@ public class PersonApiController {
         Optional<Person> optional = repository.findById(id);
         if (optional.isPresent()) {
             Person person = optional.get();
-            String heightString = person.getHeightToString();
+            String heightString = person.toString();
             return heightString;
         }
 
@@ -161,7 +161,7 @@ public class PersonApiController {
         Optional<Person> optional = repository.findById(id);
         if (optional.isPresent()) {
             Person person = optional.get();
-            String weightString = person.getWeightToString();
+            String weightString = person.toString();
             return weightString;
         }
 

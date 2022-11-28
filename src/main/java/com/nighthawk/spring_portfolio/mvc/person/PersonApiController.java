@@ -65,7 +65,11 @@ public class PersonApiController {
     public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
                                              @RequestParam("password") String password,
                                              @RequestParam("name") String name,
-                                             @RequestParam("dob") String dobString) {
+                                             @RequestParam("dob") String dobString,
+                                             @RequestParam("height") String height,
+                                             @RequestParam("weight") String weight,
+                                             @RequestParam("BMI") String bmi,
+                                             @RequestParam("BFP") String bfp){
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);
@@ -123,7 +127,45 @@ public class PersonApiController {
         }
         // return Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
-        
+
+    }
+
+    
+    @GetMapping("/getAge/{id}")
+    public String getAge (@PathVariable long id) {
+        Optional<Person> optional = repository.findById(id);
+        if (optional.isPresent()) {
+            Person person = optional.get();
+            String ageString = person.getAgeToString();
+            return ageString;
+        }
+
+        return "Error";
+    }
+
+    
+    @GetMapping("/getHeight/{id}")
+    public String getHeight (@PathVariable long id) {
+        Optional<Person> optional = repository.findById(id);
+        if (optional.isPresent()) {
+            Person person = optional.get();
+            String heightString = person.getHeightToString();
+            return heightString;
+        }
+
+        return "Error";
+    }
+
+    @GetMapping("/getWeight/{id}")
+    public String getWeight (@PathVariable long id) {
+        Optional<Person> optional = repository.findById(id);
+        if (optional.isPresent()) {
+            Person person = optional.get();
+            String weightString = person.getWeightToString();
+            return weightString;
+        }
+
+        return "Error";
     }
 
 }

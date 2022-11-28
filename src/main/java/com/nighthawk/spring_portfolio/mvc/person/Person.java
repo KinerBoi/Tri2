@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,6 +20,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
+import org.springframework.data.mongodb.core.aggregation.DateOperators.DayOfMonth;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vladmihalcea.hibernate.type.json.JsonType;
@@ -69,6 +71,8 @@ public class Person {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
+
+
     
 
     /* HashMap is used to store JSON for daily "stats"
@@ -83,13 +87,13 @@ public class Person {
     @Column(columnDefinition = "jsonb")
     private Map<String,Map<String, Object>> stats = new HashMap<>(); 
 
-    @NotEmpty
+    @Column(unique = false)
     private double height;
 
-    @NotEmpty
+    @Column(unique = false)
     private double age;
 
-    @NotEmpty
+    @Column(unique=false)
     private double weight;
 
     
@@ -132,7 +136,7 @@ public class Person {
 
     public double bodyFatPercentage (double bmi, double height, double weight, double age) {
         double bfp = ((1.20 * bodyMassIndex(height, weight)) + (0.23 * age) - 5.4);
-        return bfp;
+        return bmi;
     }
 
 
@@ -157,7 +161,12 @@ public class Person {
     }
 
     public static void main(String args[]) {
+
+        Person mandem = new Person();
+
+        Date dob= new GregorianCalendar(year:2005, month:5, DayOfMonth:28).getAge();
         
+        Person Kinish = new Person(email: "kinish2005@gmail.com",password: "2334", name:"Kinish Sathish", dob, height:70.5, weight: 154, bmi, bmi , netCaloriePerDay);
 
     }
 

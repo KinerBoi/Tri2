@@ -100,7 +100,7 @@ public class Person {
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob, double height, double age, double weight) {
+    public Person(String email, String password, String name, Date dob, double height, double weight, double age) {
         this.email = email;
         this.password = password;
         this.name = name;

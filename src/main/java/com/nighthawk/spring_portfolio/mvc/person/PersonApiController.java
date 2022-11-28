@@ -65,13 +65,11 @@ public class PersonApiController {
     public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
                                              @RequestParam("password") String password,
                                              @RequestParam("name") String name,
-                                             @RequestParam("dob") String dobString){
-                                             /*
+                                             @RequestParam("dob") String dobString,
                                              @RequestParam("height") String height,
-                                             @RequestParam("weight") String weight,
-                                             @RequestParam("BMI") String bmi,
-                                             @RequestParam("BFP") String bfp){
-                                            */
+                                             @RequestParam("weight") String weight){
+                                             
+                                            
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);

@@ -1,5 +1,6 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -161,14 +162,14 @@ public class Person {
         return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"height\": " + this.height + ", "+ "\"weight\": " + this.weight + ", " + "\"age\": " + this.getAge() + " }");
     }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParseException {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date dob1 = format.parse("2005-05-28");
         Date dob2 = format.parse("2005-10-04");
 
-        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob1,70.5,154,age);
-        Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob2 ,69.5,135,age);
+        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob1,70.5,154,17);
+        Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob2 ,69.5,135,17);
 
     }
 

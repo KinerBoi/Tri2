@@ -107,8 +107,8 @@ public class Person {
         this.id = id;
         this.dob = dob;
         this.height = height;
-        this.age = age;
         this.weight = weight;
+        this.age = age;
         
     }
 

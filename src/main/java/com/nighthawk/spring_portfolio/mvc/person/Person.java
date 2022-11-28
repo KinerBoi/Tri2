@@ -158,7 +158,7 @@ public class Person {
     }
 
     public String toString () {
-        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"height\": " + this.height + ", "+ "\"weight\": " + this.weight + ", " + "\"age\": " + this.getAge() + " }");
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"height\": " + this.height + ", "+ "\"weight\": " + this.weight + ", " + " }");
     }
 
     public static void main(String args[]) throws ParseException {

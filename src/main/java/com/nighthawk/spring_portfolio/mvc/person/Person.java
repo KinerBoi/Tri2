@@ -103,6 +103,7 @@ public class Person {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.id = id;
         this.dob = dob;
         this.height = height;
         this.age = age;
@@ -164,9 +165,9 @@ public class Person {
 
         Person mandem = new Person();
 
-        Date dob= new GregorianCalendar(year:2005, month:5, DayOfMonth:28).getAge();
+        Date dob= new GregorianCalendar(2005,5,28);
         
-        Person Kinish = new Person(email: "kinish2005@gmail.com",password: "2334", name:"Kinish Sathish", dob, height:70.5, weight: 154, bmi, bmi , netCaloriePerDay);
+        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish",19, dob,70.5,154,);
 
     }
 

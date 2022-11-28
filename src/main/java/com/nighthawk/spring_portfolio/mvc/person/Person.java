@@ -157,11 +157,10 @@ public class Person {
     }
 
     public String toString () {
-        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"password\": " 
-        + this.password);
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + " }");
     }
 
-    public void main(String args[]) {
+    public static void main(String args[]) {
 
         Person mandem = new Person();
 

@@ -167,7 +167,8 @@ public class Person {
 
         GregorianCalendar dob = new GregorianCalendar(2005,5,28);
         
-        Person Kinish = new Person(email: "kinish2005@gmail.com","2334","Kinish Sathish",19, dob,70.5,154,);
+        Person Kinish = new Person(email: "kinish2005@gmail.com","2334","Kinish Sathish",19, dob,70.5,154);
+        Person Ritvik = new Person(email: "ritvikkeerthi@gmail.com", password:"1223", name: "Ritvik Keerthi", 19, dob,age:,69.5,wight:135);
 
     }
 

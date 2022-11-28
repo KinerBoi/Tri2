@@ -93,7 +93,7 @@ public class Person {
     private double height;
 
     @Column(unique = false)
-    private double age;
+    private static double age;
 
     @Column(unique=false)
     private double weight;
@@ -109,7 +109,6 @@ public class Person {
         this.dob = dob;
         this.height = height;
         this.weight = weight;
-        this.age = age;
         
     }
 
@@ -167,12 +166,12 @@ public class Person {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date dob1 = format.parse("2005-05-28");
         Date dob2 = format.parse("2005-10-04");
+        
+        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob1,70.5,155,age);
+        Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob2 ,69.5,135,age);
 
-
-        Person noArgsPerson = new Person();
-        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob1,70.5,154,17);
-        Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob2 ,69.5,135,17);
-
+        System.out.println(Kinish);
+        System.out.println(Ritvik);
     }
 
     

@@ -127,7 +127,7 @@ public class PersonApiController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
         
     }
-    @PostMapping("/weightCalculator/{id}")
+    @PostMapping("/weightCalculator")
     public int weightCalculator(@PathVariable long id) {
         Optional<Person> optional = repository.findById(id);
         if (optional.isPresent()) {  
@@ -135,7 +135,7 @@ public class PersonApiController {
             int weightCalculator = person.weightCalculator();
             return weightCalculator;  
         }
-        // Bad ID
+       
         return -1; 
     }
 

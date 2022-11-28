@@ -166,8 +166,8 @@ public class Person {
 
         GregorianCalendar dob = new GregorianCalendar(2005,5,28);
         
-        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob,70.5,154);
-        Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob ,69.5,135);
+        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob,70.5,154,age);
+        Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob ,69.5,135,age);
 
     }
 

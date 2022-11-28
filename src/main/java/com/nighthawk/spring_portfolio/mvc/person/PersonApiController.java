@@ -67,7 +67,7 @@ public class PersonApiController {
                                              @RequestParam("name") String name,
                                              @RequestParam("dob") String dobString,
                                              @RequestParam("height") String height,
-                                             @RequestParam("weight") String weight) {
+                                             @RequestParam("weight") int weight) {
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);
@@ -126,6 +126,17 @@ public class PersonApiController {
         // return Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
         
+    }
+    @PostMapping("/weightCalculator/{id}")
+    public int weightCalculator(@PathVariable long id) {
+        Optional<Person> optional = repository.findById(id);
+        if (optional.isPresent()) {  
+            Person person = optional.get(); 
+            int weightCalculator = person.weightCalculator();
+            return weightCalculator;  
+        }
+        // Bad ID
+        return -1; 
     }
 
 }

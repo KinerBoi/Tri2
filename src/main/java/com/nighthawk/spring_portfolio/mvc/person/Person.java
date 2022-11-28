@@ -79,11 +79,11 @@ public class Person {
 
     private String height;
 
-    private String weight; 
+    private int weight; 
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob, String height, String weight) {
+    public Person(String email, String password, String name, Date dob, String height, int weight) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -98,6 +98,11 @@ public class Person {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
+    }
+    
+    public int weightCalculator() {
+        int weightCalculator = weight;
+        return weightCalculator;
     }
 
 }

@@ -168,6 +168,8 @@ public class Person {
         Date dob1 = format.parse("2005-05-28");
         Date dob2 = format.parse("2005-10-04");
 
+
+        Person noArgsPerson = new Person();
         Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob1,70.5,154,17);
         Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob2 ,69.5,135,17);
 

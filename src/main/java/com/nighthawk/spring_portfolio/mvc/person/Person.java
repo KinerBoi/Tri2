@@ -161,13 +161,13 @@ public class Person {
         + this.password);
     }
 
-    public static void main(String args[]) {
+    public void main(String args[]) {
 
         Person mandem = new Person();
 
-        Date dob= new GregorianCalendar(2005,5,28);
+        GregorianCalendar dob = new GregorianCalendar(2005,5,28);
         
-        Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish",19, dob,70.5,154,);
+        Person Kinish = new Person(email: "kinish2005@gmail.com","2334","Kinish Sathish",19, dob,70.5,154,);
 
     }
 

@@ -1,5 +1,6 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -162,9 +163,9 @@ public class Person {
 
     public static void main(String args[]) {
 
-
-        GregorianCalendar dob1 = new GregorianCalendar(2005,5,28);
-        GregorianCalendar dob2 = new GregorianCalendar(2005,7,4);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date dob1 = format.parse("2005-05-28");
+        Date dob2 = format.parse("2005-10-04");
 
         Person Kinish = new Person("kinish2005@gmail.com","2334","Kinish Sathish", dob1,70.5,154,age);
         Person Ritvik = new Person("ritvikkeerthi@gmail.com", "1223", "Ritvik Keerthi", dob2 ,69.5,135,age);

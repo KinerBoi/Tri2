@@ -63,7 +63,15 @@ public class Person {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
+
+    @NotEmpty
+    private double height;
+
+    @NotEmpty
+    private double weight;
     
+    @NotEmpty
+    private double BMI; 
 
     /* HashMap is used to store JSON for daily "stats"
     "stats": {
@@ -75,15 +83,17 @@ public class Person {
     */
     @Type(type="json")
     @Column(columnDefinition = "jsonb")
-    private Map<String,Map<String, Object>> stats = new HashMap<>(); 
+    private Map<String,Map<String, Object>> stats = new HashMap<>();
+
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob) {
+    public Person(String email, String password, String name, Date dob, double bmi) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
+        this.BMI = bmi;
     }
 
     // A custom getter to return age from dob attribute
@@ -93,5 +103,12 @@ public class Person {
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
     }
+
+    public double getBMI(double height, double weight) {
+        double BMI = (weight/(height*height))*703;
+        return BMI;
+    }
+
+
 
 }

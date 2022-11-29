@@ -75,21 +75,15 @@ public class Person {
     */
     @Type(type="json")
     @Column(columnDefinition = "jsonb")
-    private Map<String,Map<String, Object>> stats = new HashMap<>();
-
-    private String height;
-
-    private int weight; 
+    private Map<String,Map<String, Object>> stats = new HashMap<>(); 
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob, String height, int weight) {
+    public Person(String email, String password, String name, Date dob) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
-        this.height = height;
-        this.weight = weight;
     }
 
     // A custom getter to return age from dob attribute
@@ -98,11 +92,6 @@ public class Person {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
-    }
-    
-    public int weightCalculator() {
-        int weightCalculator = weight;
-        return weightCalculator;
     }
 
 }

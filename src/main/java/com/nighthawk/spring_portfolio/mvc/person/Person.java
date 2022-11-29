@@ -88,11 +88,13 @@ public class Person {
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob, double bmi) {
+    public Person(String email, String password, String name, Date dob, double height, double weight, double bmi) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
+        this.height = height;
+        this.weight = weight;
         this.BMI = bmi;
     }
 

@@ -106,10 +106,7 @@ public class Person {
         return -1;
     }
 
-    public double getBMI(double height, double weight) {
-        double BMI = (weight/(height*height))*703;
-        return BMI;
-    }
+   
 
 
 

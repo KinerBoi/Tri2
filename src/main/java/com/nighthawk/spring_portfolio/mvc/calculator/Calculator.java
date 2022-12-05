@@ -259,7 +259,7 @@ public class Calculator {
     }
 
     public String toString() {
-        return ( "{ \"Expression\": \""  + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
+        return ( "{ \"Expression\": \""  + this.expression + "\", \"Parenthesis Check\": \""+ this.parenthesesCheck() + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
     }
     
 }

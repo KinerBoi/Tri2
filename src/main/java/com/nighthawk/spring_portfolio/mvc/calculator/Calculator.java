@@ -222,7 +222,7 @@ public class Calculator {
                     case "*":
                         result = b * a;
                         break; 
-                    case "/":
+                    case "DIV":
                         result = b / a;
                         break;
                     case "%":

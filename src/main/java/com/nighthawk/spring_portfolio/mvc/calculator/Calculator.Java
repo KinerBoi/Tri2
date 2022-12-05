@@ -266,5 +266,3 @@ public class Calculator {
         String json = "{ \"Expression\": \"" + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }";
         return json;
     }
-    
-}

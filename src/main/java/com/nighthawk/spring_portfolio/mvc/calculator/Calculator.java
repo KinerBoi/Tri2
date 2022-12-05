@@ -28,6 +28,7 @@ public class Calculator {
         OPERATORS.put("!",5);
         OPERATORS.put("log", 5);
         OPERATORS.put("exp", 2);
+        OPERATORS.put("ROOT",2);
         OPERATORS.put("^", 2);
         OPERATORS.put("*", 3);
         OPERATORS.put("DIV", 3);
@@ -159,6 +160,7 @@ public class Calculator {
                 case "^":
                 case "log":
                 case "!":
+                case "ROOT":
                 case "exp":
                     // While stack has stuff and the top of the stack is an operator
                     while (tokenStack.size() > 0 && isOperator(tokenStack.peek()))
@@ -236,10 +238,8 @@ public class Calculator {
                         // Math.pow() function
                         result = Math.pow(b,a);
                         break;
-                    case "!":
-                        for(int i = 1; i <=calcStack.size(); i++) {
-                            result =  a * b * i;
-                        }
+                    case "ROOT":
+                        result = (Math.log(a) / Math.log(1/b));
                         break;
                     default:
                         break;

@@ -225,21 +225,6 @@ public class Calculator {
                         result = b % a;
                         break;
                     case "^":
-                    case "ncr":
-                        int nFac = 1;
-                        for (int i = 1; i <= b; i++) {
-                            nFac = nFac * i;
-                        }
-                        int rFac = 1;
-                        for (int i = 1; i <= a; i++) {
-                            rFac = rFac * i;
-                        }
-                        int nMinusRFac = 1;
-                        for (int i = 1; i <= b-a; i++) {
-                            nMinusRFac=  nMinusRFac * i;
-                        }
-                        result = (double) nFac/(rFac * nMinusRFac);
-                        break;
                     case "log":
                         result = (Math.log(a) / Math.log(b));
                         break;

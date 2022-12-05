@@ -122,10 +122,10 @@ public class Calculator {
         }
 
         if (leftParentheses != rightParentheses) {
-            return true;
+            return false;
         }
         else {
-            return false;
+            return true;
         }
     }
 

@@ -25,8 +25,7 @@ public class Calculator {
     private final Map<String, Integer> OPERATORS = new HashMap<>();
     {
         // Map<"token", precedence>
-        OPERATORS.put("RT", 1);
-        OPERATORS.put("POW", 2);
+        OPERATORS.put("exp", 2);
         OPERATORS.put("^", 2);
         OPERATORS.put("*", 3);
         OPERATORS.put("/", 3);
@@ -131,14 +130,13 @@ public class Calculator {
                     }
                     tokenStack.pop();
                     break;
-                case "RT":
                 case "+":
                 case "-":
                 case "*":
                 case "/":
                 case "%":
                 case "^":
-                case "POW":
+                case "exp":
                     // While stack
                     // not empty AND stack top element
                     // and is an operator
@@ -154,15 +152,8 @@ public class Calculator {
                     tokenStack.push(token);
                     break;
                 case "pi":
-                case "PI":
-                case "Pi":
-                    // recognize pi variable and replace that token with it
-                    this.reverse_polish.add("3.141592653589793238");
-                    break;
-                case "g":
-                case "G":
-                    // Added a g value to represent earth's gravitational force
-                    this.reverse_polish.add("9.8");
+                    // pi gets replaced 3.14
+                    this.reverse_polish.add("3.1415");
                     break;
                 default: 
                     try
@@ -173,7 +164,7 @@ public class Calculator {
                     {
                         // Resolve variable to 0 in order for the rest of the function to successfully run.
                         this.reverse_polish.add("0");
-                        this.expression = "Error with parsing your expression \'" + this.expression + "\'. Please enter valid numbers, operators, or variables and try again.";
+                        this.expression = "Error with parsing your expression \'" + this.expression + "\'. Please enter valid inputs and try again.";
                         break;
                     }
                     this.reverse_polish.add(token);
@@ -206,10 +197,6 @@ public class Calculator {
                 // Calculate intermediate results
                 switch (token) {
                     // b goes first, as it is popped second and must be on the left to make the equation work
-                    case "RT":
-                        // rt is the only exception as the first value is the value of the root being done to the second value
-                        result = Math.pow(a, (1/b));
-                        break;
                     case "+":
                         result = b + a;
                         break;
@@ -227,7 +214,7 @@ public class Calculator {
                         break;
                     case "^":
                     // had to implement POW because the ^ threw an error (likely due to something within the api method)
-                    case "POW":
+                    case "exp":
                         // Using Math.pow() function because it supports doubles
                         result = Math.pow(b,a);
                         break;
@@ -262,7 +249,7 @@ public class Calculator {
         return output;
     }
 
-    public String jsonify() {
+    public String toString() {
         String json = "{ \"Expression\": \"" + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }";
         return json;
     }

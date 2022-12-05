@@ -49,6 +49,8 @@ public class Calculator {
         // original input
         this.expression = expression;
 
+        this.parenthesesCheck();
+
         // parse expression into terms
         this.termTokenizer();
 

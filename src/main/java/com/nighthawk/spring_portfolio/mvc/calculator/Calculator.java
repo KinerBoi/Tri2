@@ -25,6 +25,7 @@ public class Calculator {
     private final Map<String, Integer> OPERATORS = new HashMap<>();
     {
         // Map<"token", precedence>
+        OPERATORS.put("log", 5);
         OPERATORS.put("exp", 2);
         OPERATORS.put("^", 2);
         OPERATORS.put("*", 3);
@@ -109,6 +110,25 @@ public class Calculator {
         }
     }
 
+    private boolean parenthesesCheck() {
+        int leftParentheses = 0;
+        int rightParentheses = 0;
+        for (int i = 0; i < this.expression.length(); i++) {
+            if (this.expression.charAt(i) == '(') {
+                leftParentheses++;
+            } else if (this.expression.charAt(i) == ')') {
+                rightParentheses++;
+            }
+        }
+
+        if (leftParentheses != rightParentheses) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // Conversion to Reverse Polish Notation (RPN), the operator follows its operands.
     private void tokensToReversePolishNotation () {
         this.reverse_polish = new ArrayList<>();
@@ -134,6 +154,7 @@ public class Calculator {
                 case "/":
                 case "%":
                 case "^":
+                case "log":
                 case "exp":
                     // While stack has stuff and the top of the stack is an operator
                     while (tokenStack.size() > 0 && isOperator(tokenStack.peek()))
@@ -146,10 +167,6 @@ public class Calculator {
                     }
                     // Push the new operator on the stack
                     tokenStack.push(token);
-                    break;
-                case "pi":
-                    // pi gets replaced 3.14
-                    this.reverse_polish.add("3.1415");
                     break;
                 default: 
                     try
@@ -208,6 +225,24 @@ public class Calculator {
                         result = b % a;
                         break;
                     case "^":
+                    case "ncr":
+                        int nFac = 1;
+                        for (int i = 1; i <= b; i++) {
+                            nFac = nFac * i;
+                        }
+                        int rFac = 1;
+                        for (int i = 1; i <= a; i++) {
+                            rFac = rFac * i;
+                        }
+                        int nMinusRFac = 1;
+                        for (int i = 1; i <= b-a; i++) {
+                            nMinusRFac=  nMinusRFac * i;
+                        }
+                        result = (double) nFac/(rFac * nMinusRFac);
+                        break;
+                    case "log":
+                        result = (Math.log(a) / Math.log(b));
+                        break;
                     case "exp":
                         // Math.pow() function
                         result = Math.pow(b,a);
@@ -239,7 +274,7 @@ public class Calculator {
     }
 
     public String toString() {
-        return ( "{ \"Expression\": \"" + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
+        return ( "{ \"Expression\": \""  + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
     }
     
 }

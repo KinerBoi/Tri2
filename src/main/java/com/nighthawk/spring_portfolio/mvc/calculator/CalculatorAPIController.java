@@ -20,7 +20,7 @@ public class CalculatorAPIController {
         }
 
         // Bad ID
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
     }
 
 }

@@ -237,9 +237,8 @@ public class Calculator {
                         result = Math.pow(b,a);
                         break;
                     case "!":
-                        int fac = 1;
                         for(int i = 1; i <=calcStack.size(); i++) {
-                            fac = fac * i;
+                            result =  a * b * i;
                         }
                         break;
                     default:

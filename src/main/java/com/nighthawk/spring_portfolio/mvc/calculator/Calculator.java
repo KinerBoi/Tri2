@@ -82,23 +82,22 @@ public class Calculator {
         this.tokens = new ArrayList<>();
 
         int start = 0;  // term split starting index
-        StringBuilder multiCharTerm = new StringBuilder();    // term holder
+        // holds a term
+        StringBuilder multiCharTerm = new StringBuilder();
         for (int i = 0; i < this.expression.length(); i++) {
             Character c = this.expression.charAt(i);
             if ( isOperator(c.toString() ) || isSeparator(c.toString())  ) {
-                // 1st check for working term and add if it exists
                 if (multiCharTerm.length() > 0) {
                     tokens.add(this.expression.substring(start, i));
                 }
-                // Add operator or parenthesis term to list
+                // Add operator/parenthesis to the list
                 if (c != ' ') {
                     tokens.add(c.toString());
                 }
-                // Get ready for next term
+                // preparing for next term
                 start = i + 1;
                 multiCharTerm = new StringBuilder();
             } else {
-                // multi character terms: numbers, functions, perhaps non-supported elements
                 // Add next character to working term
                 multiCharTerm.append(c);
             }
@@ -110,16 +109,15 @@ public class Calculator {
         }
     }
 
-    // Takes tokens and converts to Reverse Polish Notation (RPN), this is one where the operator follows its operands.
+    // Conversion to Reverse Polish Notation (RPN), the operator follows its operands.
     private void tokensToReversePolishNotation () {
-        // contains final list of tokens in RPN
         this.reverse_polish = new ArrayList<>();
 
-        // stack is used to reorder for appropriate grouping and precedence
+        // stack is used to reorder the elements
         Stack<String> tokenStack = new Stack<String>();
         for (String token : tokens) {
             switch (token) {
-                // If left bracket push token on to stack
+                // If it's a left bracket, push token on to stack
                 case "(":
                     tokenStack.push(token);
                     break;
@@ -137,9 +135,7 @@ public class Calculator {
                 case "%":
                 case "^":
                 case "exp":
-                    // While stack
-                    // not empty AND stack top element
-                    // and is an operator
+                    // While stack has stuff and the top of the stack is an operator
                     while (tokenStack.size() > 0 && isOperator(tokenStack.peek()))
                     {
                         if ( isPrecedent(token, tokenStack.peek() )) {
@@ -162,7 +158,7 @@ public class Calculator {
                     }
                     catch(NumberFormatException e)
                     {
-                        // Resolve variable to 0 in order for the rest of the function to successfully run.
+                        // variable resolves to 0 for it to work
                         this.reverse_polish.add("0");
                         this.expression = "Error with parsing your expression \'" + this.expression + "\'. Please enter valid inputs and try again.";
                         break;
@@ -170,33 +166,32 @@ public class Calculator {
                     this.reverse_polish.add(token);
             }
         }
-        // Empty remaining tokens
+        // Empties remaining tokens
         while (tokenStack.size() > 0) {
             reverse_polish.add(tokenStack.pop());
         }
 
     }
 
-    // Takes RPN and produces a final result
     private void rpnToResult()
     {
-        // stack is used to hold operands and each calculation
+        // stack holds operands and calculations
         Stack<Double> calcStack = new Stack<Double>();
 
-        // RPN is processed, ultimately calcStack has final result
+        // RPN processes and calcStack has final result
         for (String token : this.reverse_polish)
         {
-            // If the token is an operator, calculate
+            // token operator --> Calculator
             if (isOperator(token))
             {
                               
-                // Pop the top two entries
+                // Pop top two entries
                 double a = calcStack.pop();
                 double b = calcStack.pop();
 
-                // Calculate intermediate results
+                // Calculate middle thingies
                 switch (token) {
-                    // b goes first, as it is popped second and must be on the left to make the equation work
+                    // b goes first since its the second one to be popped
                     case "+":
                         result = b + a;
                         break;
@@ -213,28 +208,22 @@ public class Calculator {
                         result = b % a;
                         break;
                     case "^":
-                    // had to implement POW because the ^ threw an error (likely due to something within the api method)
                     case "exp":
-                        // Using Math.pow() function because it supports doubles
+                        // Math.pow() function
                         result = Math.pow(b,a);
                         break;
                     default:
                         break;
                 }
 
-                // Pop the two top entries
-
-
-                // Push intermediate result back onto the stack
                 calcStack.push( result );
             }
-            // else the token is a number push it onto the stack
+            // token is a number so push to stack
             else
             {
                 calcStack.push(Double.valueOf(token));
             }
         }
-        // Pop final result and set as final result for expression
         this.result = calcStack.pop();
     }
 
@@ -250,6 +239,7 @@ public class Calculator {
     }
 
     public String toString() {
-        String json = "{ \"Expression\": \"" + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }";
-        return json;
+        return ( "{ \"Expression\": \"" + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
     }
+    
+}

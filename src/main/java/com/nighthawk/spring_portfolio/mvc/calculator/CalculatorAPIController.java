@@ -1,12 +1,9 @@
 package com.nighthawk.spring_portfolio.mvc.calculator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.;
 
 @RestController
 @RequestMapping("/api/calculator")
@@ -16,8 +13,8 @@ public class CalculatorAPIController {
     public ResponseEntity<String> getResult(@PathVariable String expression) {
 
         // Returns jsonified result of expression with tokens and everything
-        Calculator a = new Calculator(expression);
-        String result = a.jsonify();
+        Calculator calc = new Calculator(expression);
+        String result = calc.toString();
         if (result != null) {
             return new ResponseEntity<String>(result, HttpStatus.OK);
         }
@@ -27,4 +24,3 @@ public class CalculatorAPIController {
     }
 
 }
-

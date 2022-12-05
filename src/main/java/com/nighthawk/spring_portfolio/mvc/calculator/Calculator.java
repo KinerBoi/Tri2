@@ -30,7 +30,7 @@ public class Calculator {
         OPERATORS.put("exp", 2);
         OPERATORS.put("^", 2);
         OPERATORS.put("*", 3);
-        OPERATORS.put("/", 3);
+        OPERATORS.put("DIV", 3);
         OPERATORS.put("%", 3);
         OPERATORS.put("+", 4);
         OPERATORS.put("-", 4);
@@ -154,7 +154,7 @@ public class Calculator {
                 case "+":
                 case "-":
                 case "*":
-                case "/":
+                case "DIV":
                 case "%":
                 case "^":
                 case "log":

@@ -239,7 +239,7 @@ public class Calculator {
                         result = Math.pow(b,a);
                         break;
                     case "ROOT":
-                        result = (Math.log(a) / Math.log(1/b));
+                        result = Math.pow(b,1/a);
                         break;
                     default:
                         break;

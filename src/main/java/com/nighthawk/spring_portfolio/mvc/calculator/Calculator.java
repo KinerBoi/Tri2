@@ -25,6 +25,7 @@ public class Calculator {
     private final Map<String, Integer> OPERATORS = new HashMap<>();
     {
         // Map<"token", precedence>
+        OPERATORS.put("!",5);
         OPERATORS.put("log", 5);
         OPERATORS.put("exp", 2);
         OPERATORS.put("^", 2);
@@ -157,6 +158,7 @@ public class Calculator {
                 case "%":
                 case "^":
                 case "log":
+                case "!":
                 case "exp":
                     // While stack has stuff and the top of the stack is an operator
                     while (tokenStack.size() > 0 && isOperator(tokenStack.peek()))
@@ -233,6 +235,12 @@ public class Calculator {
                     case "exp":
                         // Math.pow() function
                         result = Math.pow(b,a);
+                        break;
+                    case "!":
+                        int fac = 1;
+                        for(int i = 1; i <=calcStack.size(); i++) {
+                            fac = fac * i;
+                        }
                         break;
                     default:
                         break;

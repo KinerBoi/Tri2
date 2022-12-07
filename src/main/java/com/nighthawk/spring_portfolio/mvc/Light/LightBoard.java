@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.lightboard;
+package com.nighthawk.spring_portfolio.mvc.Light;
 
 import lombok.Data;
 
@@ -125,9 +125,4 @@ public class LightBoard {
         System.out.println(lightBoard.toColorPalette());
     }
 }
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
 

@@ -18,11 +18,13 @@ public class Calculator {
     private final Map<String, Integer> OPERATORS = new HashMap<>();
     {
         // Map<"token", precedence>
+        OPERATORS.put("!",5);
         OPERATORS.put("log", 5);
         OPERATORS.put("exp", 2);
+        OPERATORS.put("ROOT",2);
         OPERATORS.put("^", 2);
         OPERATORS.put("*", 3);
-        OPERATORS.put("/", 3);
+        OPERATORS.put("DIV", 3);
         OPERATORS.put("%", 3);
         OPERATORS.put("+", 4);
         OPERATORS.put("-", 4);
@@ -41,6 +43,8 @@ public class Calculator {
     public Calculator(String expression) {
         // original input
         this.expression = expression;
+
+        this.parenthesesCheck();
 
         // parse expression into terms
         this.termTokenizer();
@@ -144,10 +148,12 @@ public class Calculator {
                 case "+":
                 case "-":
                 case "*":
-                case "/":
+                case "DIV":
                 case "%":
                 case "^":
                 case "log":
+                case "!":
+                case "ROOT":
                 case "exp":
                     // While stack has stuff and the top of the stack is an operator
                     while (tokenStack.size() > 0 && isOperator(tokenStack.peek()))
@@ -211,7 +217,7 @@ public class Calculator {
                     case "*":
                         result = b * a;
                         break; 
-                    case "/":
+                    case "DIV":
                         result = b / a;
                         break;
                     case "%":
@@ -224,6 +230,9 @@ public class Calculator {
                     case "exp":
                         // Math.pow() function
                         result = Math.pow(b,a);
+                        break;
+                    case "ROOT":
+                        result = Math.pow(b,1/a);
                         break;
                     default:
                         break;
@@ -252,7 +261,7 @@ public class Calculator {
     }
 
     public String toString() {
-        return ( "{ \"Expression\": \""  + this.expression + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
+        return ( "{ \"Expression\": \""  + this.expression + "\", \"Parenthesis Check\": \""+ this.parenthesesCheck() + "\", \"Tokens\": \"" + this.tokens + "\", \"RPN\": \"" + this.reverse_polish + "\", \"Result\": " + this.result + " }" );
     }
     
 }

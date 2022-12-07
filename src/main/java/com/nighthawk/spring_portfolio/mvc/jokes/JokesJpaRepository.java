@@ -9,3 +9,4 @@ public interface JokesJpaRepository extends JpaRepository<Jokes, Long> {
     List<Jokes> findByJokeIgnoreCase(String joke);
 }
 
+//

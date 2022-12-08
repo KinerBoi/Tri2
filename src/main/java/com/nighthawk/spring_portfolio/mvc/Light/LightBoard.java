@@ -116,6 +116,54 @@ public class LightBoard {
         outString += "\033[m";
 		return outString;
     }
+
+    public String toColorCircle() {
+        // block sizes
+        final int ROWS = 100;
+        final int COLS = 100;
+
+        // Build large string for entire color palette
+        String outString = "";
+        // find each row
+        for (int row = 0; row < lights.length; row++) {
+            // repeat each row for block size
+            for (int i = 0; i < ROWS; i++) {
+                // find each column
+                for (int col = 0; col < lights[row].length; col++) {
+                    // repeat each column for block size
+                    for (int j = 0; j < COLS; j++) {
+                        // print single character, except at midpoint print color code
+                        String c = (i == (int) (ROWS / 2) && j == (int) (COLS / 2) ) 
+                            ? lights[row][col].getRGB()
+                            : (j == (int) (COLS / 2))  // nested ternary
+                            ? " ".repeat(lights[row][col].getRGB().length())
+                            : " ";
+
+                        outString += 
+                        // reset
+                        "\033[m" +
+                        
+                        // color
+                        "\033[38;2;" + 
+                        lights[row][col].getRed() + ";" +
+                        lights[row][col].getGreen() + ";" +
+                        lights[row][col].getBlue() + ";" +
+                        "7m" +
+
+                        // color code or blank character
+                        c +
+
+                        // reset
+                        "\033[m";
+                    }
+                }
+                outString += "\n";
+            }
+        }
+        // remove last comma, newline, add square bracket, reset color
+        outString += "\033[m";
+		return outString;
+    }
     
     static public void main(String[] args) {
         // create and display LightBoard

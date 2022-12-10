@@ -117,10 +117,10 @@ public class LightBoard {
 		return outString;
     }
 
-    public String toColorCircle() {
+    public String toOwnSoverignNationFlag() {
         // block sizes
-        final int ROWS = 100;
-        final int COLS = 100;
+        final int ROWS = 3;
+        final int COLS = 3;
 
         // Build large string for entire color palette
         String outString = "";
@@ -171,6 +171,9 @@ public class LightBoard {
         System.out.println(lightBoard);  // use toString() method
         System.out.println(lightBoard.toTerminal());
         System.out.println(lightBoard.toColorPalette());
+        
+        LightBoard lightBoard2 = new LightBoard(3, 4);
+        System.out.println(lightBoard2.toOwnSoverignNationFlag());
     }
 }
 

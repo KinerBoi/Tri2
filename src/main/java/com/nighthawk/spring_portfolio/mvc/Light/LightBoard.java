@@ -1,6 +1,7 @@
 package com.nighthawk.spring_portfolio.mvc.Light;
 
 import lombok.Data;
+import java.util.Scanner;
 
 @Data  // Annotations to simplify writing code (ie constructors, setters)
 public class LightBoard {
@@ -117,10 +118,10 @@ public class LightBoard {
 		return outString;
     }
 
-    public String toOwnSoverignNationFlag() {
+    public String nationalFlag() {
         // block sizes
-        final int ROWS = 3;
-        final int COLS = 3;
+        final int ROWS = 5;
+        final int COLS = 10;
 
         // Build large string for entire color palette
         String outString = "";
@@ -131,11 +132,9 @@ public class LightBoard {
                 // find each column
                 for (int col = 0; col < lights[row].length; col++) {
                     // repeat each column for block size
-                    for (int j = 0; j < COLS; j++) {
-                        // print single character, except at midpoint print color code
-                        String c = (i == (int) (ROWS / 2) && j == (int) (COLS / 2) ) 
+                    String c = (ROWS == (int) (ROWS) && COLS == (int) (COLS) ) 
                             ? lights[row][col].getRGB()
-                            : (j == (int) (COLS / 2))  // nested ternary
+                            : (COLS == (int) (COLS / 2))  // nested ternary
                             ? " ".repeat(lights[row][col].getRGB().length())
                             : " ";
 
@@ -155,7 +154,6 @@ public class LightBoard {
 
                         // reset
                         "\033[m";
-                    }
                 }
                 outString += "\n";
             }
@@ -164,7 +162,10 @@ public class LightBoard {
         outString += "\033[m";
 		return outString;
     }
-    
+
+ 
+
+
     static public void main(String[] args) {
         // create and display LightBoard
         LightBoard lightBoard = new LightBoard(5, 5);
@@ -173,7 +174,7 @@ public class LightBoard {
         System.out.println(lightBoard.toColorPalette());
         
         LightBoard lightBoard2 = new LightBoard(3, 4);
-        System.out.println(lightBoard2.toOwnSoverignNationFlag());
+        System.out.println(lightBoard2.nationalFlag());
     }
 }
 

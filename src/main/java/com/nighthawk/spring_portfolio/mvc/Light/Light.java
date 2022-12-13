@@ -63,11 +63,6 @@ public class Light {
          );
     }
 
-    public String getSoverignNationFlag() {
-
-        return String.format("");
-    }
-
     /* toString output as key/values */
     public String toString() {
         return( "{" + 

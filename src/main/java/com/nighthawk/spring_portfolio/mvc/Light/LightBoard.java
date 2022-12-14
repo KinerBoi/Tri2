@@ -1,4 +1,5 @@
-package com.nighthawk.spring_portfolio.mvc.lights;
+package com.nighthawk.spring_portfolio.mvc.Light;
+import java.util.Scanner;
 
 public class LightBoard {
     private Light[][] lights;
@@ -62,8 +63,8 @@ public class LightBoard {
     /* Output is intended for Terminal, draws color palette */
     public String toColorPalette() {
         // block sizes
-        final int ROWS = 5;
-        final int COLS = 10;
+        final int ROWS = 4;
+        final int COLS = 8;
 
         // Build large string for entire color palette
         String outString = "";
@@ -126,7 +127,7 @@ public class LightBoard {
                 lights[i][j].setOn(true);
             }
         }
-        System.out.println("All Lights On");
+        System.out.println("Lights On");
     }
 
     public void allOff() {
@@ -135,18 +136,29 @@ public class LightBoard {
                 lights[i][j].setOn(false);
             }
         }
-        System.out.println("All Lights Off");
+        System.out.println("Lights Off");
+    }
+
+    public void inputColor(short red, short green, short blue, int row, int column) {
+        lights[row][column].setRGB(red,green,blue);
+
     }
     
     static public void main(String[] args) {
-        LightBoard lightBoard = new LightBoard(2, 2);
+        LightBoard lightBoard = new LightBoard(10, 10);
         //System.out.println(lightBoard);
         //System.out.println(lightBoard.toTerminal());
         lightBoard.allOn();
         System.out.println(lightBoard.toColorPalette());
         lightBoard.allOff();
         System.out.println(lightBoard.toColorPalette());
-        lightBoard.lightToggle(1, 1);
+        lightBoard.lightToggle(4, 3);
         System.out.println(lightBoard.toColorPalette());
+        
+        short red = 100;
+        short green = 50;
+        short blue = 200;
+        lightBoard.inputColor(red,green,blue,5,7);
+        
     }
 }

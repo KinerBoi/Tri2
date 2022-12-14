@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.lights;
+package com.nighthawk.spring_portfolio.mvc.Light;
 
 import java.util.HashMap;
 import java.util.Map;
